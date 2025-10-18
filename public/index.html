@@ -23,17 +23,17 @@
     arjs="sourceType: webcam; facingMode: environment; debugUIEnabled: false; start: false">
     
     <a-assets>
-      <img id="mapTex" src="/assets/asia-map.png" crossorigin="anonymous"/>
+      <img id="mapTex" src="public/assets/asia-map.png" crossorigin="anonymous"/>
     </a-assets>
 
     <a-nft
       type="nft"
-      url="/assets/asia-map"
+      url="public/assets/asia-map"
       smooth="true"
       smoothCount="10"
       smoothTolerance="0.01"
       smoothThreshold="5"
-      hotspots-loader-arjs="src: /data/asia-stats.json">
+      hotspots-loader-arjs="src: public/data/asia-stats.json">
     </a-nft>
 
     <a-entity camera></a-entity>
