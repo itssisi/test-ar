@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "note": "Positions are normalized to a reference plane width=1.2, height=0.8 centered on the NFT anchor. X in [-0.6,0.6], Y in [-0.4,0.4]."
+  },
+  "countries": [
+    {
+      "id": "china",
+      "name": "China",
+      "x": 0.1,
+      "y": 0.02,
+      "values": {
+        "GDP": "$17.5T",
+        "Population": "1.41B",
+        "CO2": "10.5 Gt"
+      }
+    },
+    {
+      "id": "india",
+      "name": "India",
+      "x": -0.1,
+      "y": -0.06,
+      "values": {
+        "GDP": "$3.4T",
+        "Population": "1.43B",
+        "CO2": "2.7 Gt"
+      }
+    },
+    {
+      "id": "japan",
+      "name": "Japan",
+      "x": 0.38,
+      "y": 0.1,
+      "values": {
+        "GDP": "$4.2T",
+        "Population": "124M",
+        "CO2": "1.1 Gt"
+      }
+    },
+    {
+      "id": "indonesia",
+      "name": "Indonesia",
+      "x": 0.33,
+      "y": -0.2,
+      "values": {
+        "GDP": "$1.3T",
+        "Population": "278M",
+        "CO2": "0.7 Gt"
+      }
+    },
+    {
+      "id": "russia",
+      "name": "Russia",
+      "x": 0.05,
+      "y": 0.24,
+      "values": {
+        "GDP": "$2.2T",
+        "Population": "146M",
+        "CO2": "1.7 Gt"
+      }
+    },
+    {
+      "id": "south-korea",
+      "name": "S. Korea",
+      "x": 0.28,
+      "y": 0.1,
+      "values": {
+        "GDP": "$1.7T",
+        "Population": "51M",
+        "CO2": "0.65 Gt"
+      }
+    },
+    {
+      "id": "vietnam",
+      "name": "Vietnam",
+      "x": 0.2,
+      "y": -0.12,
+      "values": {
+        "GDP": "$0.41T",
+        "Population": "100M",
+        "CO2": "0.35 Gt"
+      }
+    },
+    {
+      "id": "thailand",
+      "name": "Thailand",
+      "x": 0.17,
+      "y": -0.17,
+      "values": {
+        "GDP": "$0.50T",
+        "Population": "71M",
+        "CO2": "0.28 Gt"
+      }
+    },
+    {
+      "id": "malaysia",
+      "name": "Malaysia",
+      "x": 0.22,
+      "y": -0.19,
+      "values": {
+        "GDP": "$0.42T",
+        "Population": "34M",
+        "CO2": "0.29 Gt"
+      }
+    },
+    {
+      "id": "singapore",
+      "name": "Singapore",
+      "x": 0.19,
+      "y": -0.2,
+      "values": {
+        "GDP": "$0.52T",
+        "Population": "6M",
+        "CO2": "0.05 Gt"
+      }
+    }
+  ]
+}
