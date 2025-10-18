@@ -42,21 +42,35 @@
 
   </a-scene>
 
-   <script>
-    const scene = document.querySelector('a-scene');
-    const nft   = document.querySelector('a-nft');
+  <script>
+  const startBtn = document.getElementById('startAR');
+  const scene = document.querySelector('a-scene');
 
-    // Useful AR.js lifecycle logs
-    scene.addEventListener('arjs-video-loaded',   () => console.log('[ARJS] video loaded'));
-    scene.addEventListener('camera-init',         (e)=> console.log('[ARJS] camera init', e.detail));
-    scene.addEventListener('camera-error',        (e)=> console.error('[ARJS] camera error', e.detail));
-
-    if (nft) {
-      nft.addEventListener('markerFound', () => console.log('[ARJS] NFT marker FOUND'));
-      nft.addEventListener('markerLost',  () => console.log('[ARJS] NFT marker LOST'));
-    } else {
-      console.warn('No <a-nft> found in DOM');
+  async function requestCameraPermission() {
+    // Try rear camera first, then fallback gracefully
+    const constraints = { video: { facingMode: { ideal: 'environment' } }, audio: false };
+    let stream;
+    try {
+      stream = await navigator.mediaDevices.getUserMedia(constraints);
+      // Close the temporary stream immediately — we only needed the permission grant
+      stream.getTracks().forEach(t => t.stop());
+      return true;
+    } catch (err) {
+      console.error('getUserMedia error:', err);
+      alert('Camera permission is required to start AR. Please allow camera access.');
+      return false;
     }
+  }
+
+  startBtn.addEventListener('click', async () => {
+    const ok = await requestCameraPermission();
+    if (ok) {
+      // Start AR.js (requests its own stream now that permission is granted)
+      scene.systems['arjs'].start();
+      startBtn.style.display = 'none';
+    }
+  });
   </script>
+
 </body>
 </html>
