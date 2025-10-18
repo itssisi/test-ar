@@ -27,24 +27,31 @@
     </a-assets>
 
     <a-nft
-      type="nft"
-      url="public/assets/asia-map"
-      smooth="true"
-      smoothCount="10"
-      smoothTolerance="0.01"
-      smoothThreshold="5"
-      hotspots-loader-arjs="src: public/data/asia-stats.json">
+    type="nft"
+    url="public/assets/asia-map"
+    smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"
+    emitevents="true"
+    hotspots-loader-arjs="src: public/data/asia-stats.json">
     </a-nft>
 
     <a-entity camera></a-entity>
   </a-scene>
 
-  <script>
-    const scene=document.querySelector('a-scene');
-    document.getElementById('startAR').addEventListener('click',()=>{
-      scene.systems['arjs'].start();
-      document.getElementById('startAR').style.display='none';
-    });
+   <script>
+    const scene = document.querySelector('a-scene');
+    const nft   = document.querySelector('a-nft');
+
+    // Useful AR.js lifecycle logs
+    scene.addEventListener('arjs-video-loaded',   () => console.log('[ARJS] video loaded'));
+    scene.addEventListener('camera-init',         (e)=> console.log('[ARJS] camera init', e.detail));
+    scene.addEventListener('camera-error',        (e)=> console.error('[ARJS] camera error', e.detail));
+
+    if (nft) {
+      nft.addEventListener('markerFound', () => console.log('[ARJS] NFT marker FOUND'));
+      nft.addEventListener('markerLost',  () => console.log('[ARJS] NFT marker LOST'));
+    } else {
+      console.warn('No <a-nft> found in DOM');
+    }
   </script>
 </body>
 </html>
