@@ -18,9 +18,10 @@
 
   <a-scene
     embedded
-    renderer="colorManagement: true; physicallyCorrectLights: true"
     vr-mode-ui="enabled: false"
-    arjs="sourceType: webcam; facingMode: environment; debugUIEnabled: false; start: false">
+    renderer="colorManagement: true; physicallyCorrectLights: true"
+    arjs="sourceType: webcam; facingMode: environment; trackingMethod: best; debugUIEnabled: false; start: false"
+    device-orientation-permission-ui="enabled: false">
     
     <a-assets>
       <img id="mapTex" src="public/assets/asia-map.png" crossorigin="anonymous"/>
@@ -34,7 +35,11 @@
     hotspots-loader-arjs="src: public/data/asia-stats.json">
     </a-nft>
 
-    <a-entity camera></a-entity>
+    <a-entity camera
+      look-controls="enabled: false"
+      wasd-controls="enabled: false">
+    </a-entity>
+
   </a-scene>
 
    <script>
