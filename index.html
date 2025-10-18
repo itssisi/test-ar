@@ -17,6 +17,24 @@
       .hint { position: fixed; top: 10px; left: 0; right: 0; text-align: center; color: #fff; font-family: system-ui; }
     </style>
   </head>
+
+  <button id="enableCam"
+  style="position:fixed;inset:auto 16px 16px auto;padding:12px 16px;z-index:9999;
+         border:0;border-radius:12px;background:#111;color:#fff;font:600 14px system-ui;">
+  Enable Camera
+  </button>
+  <script>
+    async function unlockCamera() {
+      try {
+        const s = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" }});
+        // immediately release; AR.js will acquire its own stream
+        s.getTracks().forEach(t => t.stop());
+      } catch (e) { console.warn(e); alert("Please allow camera in browser settings."); }
+      document.getElementById('enableCam').style.display = 'none';
+    }
+    document.getElementById('enableCam').addEventListener('click', unlockCamera, { passive:true });
+  </script>
+
   <body>
     <div class="hint">Point your camera at the printed Asia map. Tap regions or pins.</div>
     <img src="./worldmap.png" alt="Asia Map" width="600">
