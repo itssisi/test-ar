@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+  <title>AR.js Map Stats (Vercel)</title>
+  <meta http-equiv="Permissions-Policy" content="camera=*, microphone=()">
+  <style>body,html{margin:0;padding:0;background:#000;overflow:hidden}
+    #startAR{position:fixed;right:12px;bottom:12px;padding:10px 14px;border-radius:10px;border:none;background:#1e88e5;color:#fff;font:600 14px system-ui;z-index:10}
+    .hint{position:fixed;left:12px;bottom:12px;color:#fff;font:14px/1.35 system-ui;background:rgba(0,0,0,.35);padding:8px 10px;border-radius:8px;opacity:.9}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ar.js@3.3.2/aframe/build/aframe-ar-nft.min.js"></script>
+  <script src="/app.js"></script>
+</head>
+<body>
+  <button id="startAR">Start AR</button>
+
+  <a-scene
+    embedded
+    renderer="colorManagement: true; physicallyCorrectLights: true"
+    vr-mode-ui="enabled: false"
+    arjs="sourceType: webcam; facingMode: environment; debugUIEnabled: false; start: false">
+    
+    <a-assets>
+      <img id="mapTex" src="/assets/asia-map.png" crossorigin="anonymous"/>
+    </a-assets>
+
+    <a-nft
+      type="nft"
+      url="/assets/asia-map"
+      smooth="true"
+      smoothCount="10"
+      smoothTolerance="0.01"
+      smoothThreshold="5"
+      hotspots-loader-arjs="src: /data/asia-stats.json">
+    </a-nft>
+
+    <a-entity camera></a-entity>
+  </a-scene>
+
+  <script>
+    const scene=document.querySelector('a-scene');
+    document.getElementById('startAR').addEventListener('click',()=>{
+      scene.systems['arjs'].start();
+      document.getElementById('startAR').style.display='none';
+    });
+  </script>
+</body>
+</html>

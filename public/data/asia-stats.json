@@ -1,7 +1,4 @@
 {
-  "meta": {
-    "note": "Positions are normalized to a reference plane width=1.2, height=0.8 centered on the NFT anchor. X in [-0.6,0.6], Y in [-0.4,0.4]."
-  },
   "countries": [
     {
       "id": "china",
